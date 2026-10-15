@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "namespace": "demo_users",
+  "fields": [
+    { "name": "id", "type": "sequence", "prefix": "usr_" },
+    { "name": "email", "type": "email" },
+    { "name": "plan", "type": "choice", "values": ["free", "team", "enterprise"] },
+    { "name": "active", "type": "boolean" },
+    { "name": "credits", "type": "integer", "min": 0, "max": 1000 },
+    { "name": "created_at", "type": "timestamp", "from": "2026-01-01T00:00:00.000Z", "to": "2026-01-31T23:59:59.999Z" }
+  ]
+}

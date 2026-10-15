@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
+import { generate, loadSchema } from '../src/index.mjs';
+const users = loadSchema(fileURLToPath(new URL('./users.schema.json',import.meta.url)));
+const orders = loadSchema(fileURLToPath(new URL('./orders.schema.json',import.meta.url)));
+const collect = async (schema,opts) => { let text = ''; for await (const chunk of generate(schema,opts)) text += chunk; return text; };
+const userData = await collect(users,{ rows: 100, seed: 'public-demo' });
+const ids = new Set(userData.trim().split('\n').map(line => JSON.parse(line).id));
+const orderData = await collect(orders,{ rows: 1000, seed: 'public-demo' });
+assert.ok(orderData.trim().split('\n').every(line => ids.has(JSON.parse(line).user_id)));
+const shards = await collect(orders,{ rows: 400, seed: 'public-demo' }) + await collect(orders,{ rows: 600, offset: 400, seed: 'public-demo' });
+assert.equal(shards,orderData);
+console.log(JSON.stringify({ ok: true, users: ids.size, orders: 1000, referencesValid: true, partitionsIdentical: true }));

@@ -1,0 +1,41 @@
+{
+  "name": "fixture-foundry",
+  "version": "0.1.0",
+  "description": "Deterministic synthetic fixtures with streaming JSONL/CSV, stable partitions and relational references. Local, bounded and dependency-free.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "author": "David Castro",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "fixture-foundry": "bin/fixture-foundry.mjs"
+  },
+  "exports": "./src/index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dcastroro/fixture-foundry.git"
+  },
+  "homepage": "https://github.com/Dcastroro/fixture-foundry#readme",
+  "bugs": {
+    "url": "https://github.com/Dcastroro/fixture-foundry/issues"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "demo": "node examples/demo.mjs",
+    "benchmark": "node scripts/benchmark.mjs",
+    "repo:check": "node scripts/repository-check.mjs",
+    "release:build": "node scripts/build-release.mjs"
+  },
+  "keywords": [
+    "fixtures",
+    "synthetic-data",
+    "testing",
+    "automation",
+    "developer-tools",
+    "cli",
+    "nodejs"
+  ]
+}

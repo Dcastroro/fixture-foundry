@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "namespace": "demo_orders",
+  "fields": [
+    { "name": "id", "type": "sequence", "prefix": "ord_" },
+    { "name": "user_id", "type": "reference", "count": 100, "prefix": "usr_" },
+    { "name": "tracking_id", "type": "uuid" },
+    { "name": "total_cents", "type": "integer", "min": 100, "max": 50000 },
+    { "name": "status", "type": "choice", "values": ["pending", "paid", "shipped"] }
+  ]
+}

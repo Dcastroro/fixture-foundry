@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+.env
+.env.*
+reports/
+*.log
+.release/
+*.jsonl
+*.csv
+.fixture-foundry-*.tmp
